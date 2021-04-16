@@ -1,0 +1,24 @@
+class Solution{
+    //Function to return list containing elements of right view of binary tree.
+    int maxl=0;
+    ArrayList<Integer> rightView(Node node) {
+        //add code here.
+        ArrayList<Integer> al=new ArrayList<Integer>();
+        rightViewUtil(al,node,1);
+      return al;
+    }
+    
+    void rightViewUtil(ArrayList<Integer> al,Node root,int level){
+       // al=new ArrayList<Integer>();
+        
+        if(root==null)
+        return;
+        if(level>maxl){
+            al.add(root.data);
+            maxl=level;
+        }
+        rightViewUtil(al,root.right,level+1);
+        rightViewUtil(al,root.left,level+1);
+      
+    }
+}
